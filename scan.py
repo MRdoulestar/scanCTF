@@ -1,4 +1,4 @@
-#coding:utf-8
+#coding=utf-8
 import requests
 import os
 import sys
@@ -15,7 +15,7 @@ def getFuzzUrl():
 		print("ERROR:::Can't open the dictionary.")
 
 def run(url):
-	r = requests.get(url,timeout=0.8)
+	r = requests.get(url)
 	return r.status_code
 
 if __name__ == '__main__':
