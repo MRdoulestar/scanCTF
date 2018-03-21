@@ -1,13 +1,14 @@
 #coding=utf-8
-
+__author__ = yunsle
 import threading
 import requests
 import os
 import sys
 import Queue
+import time
 
 q = Queue.Queue()
-thread_num = 6
+thread_num = 8
 
 def getFuzzUrl():
 	try:
@@ -28,9 +29,10 @@ def scan():
 		extUrl = q.get()
 		code = request(baseUrl+extUrl)
 		if code!=404:
-			print(str(code)+"--------------------"+baseUrl+extUrl)
+			print(str(code)+"--------------------"+baseUrl+extUrl.strip())
 	
 
+threads=[]
 if __name__ == '__main__':
 	try:
 		baseUrl = sys.argv[1].rstrip('/')
@@ -45,6 +47,14 @@ if __name__ == '__main__':
 		print("ERROR:::The baseurl is not valid.")
 		sys.exit(1)
 	getFuzzUrl()
+
+	st = time.time()
 	for i in range(thread_num):
-		t = threading.Thread(target=scan)
-		t.start()
+		threads.append(threading.Thread(target=scan))
+	for i in range(thread_num):
+		threads[i].setDaemon(True)
+		threads[i].start()
+	for i in range(thread_num):
+		threads[i].join()
+	et = time.time()
+	print("Cost time %.3fs" % (et - st))
