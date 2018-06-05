@@ -1,5 +1,5 @@
 #coding=utf-8
-__author__ = yunsle
+__author__ = "yunsle"
 import threading
 import requests
 import os

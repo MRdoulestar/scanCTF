@@ -50,6 +50,9 @@
 /.index.php.swp
 /index.php.bak
 /.index.php~
+/index.php.bak_Edietplus
+/index.php.~
+/index.php.~1~
 /index.php
 /index.php~
 /index.php.rar
@@ -60,6 +63,7 @@
 /login.php
 /register.php
 /test.php
+/upload.php
 /phpinfo.php
 /t.php
 /www.zip
