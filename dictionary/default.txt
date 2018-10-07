@@ -1,3 +1,5 @@
+/flag
+/flag.php
 /.git
 /.git/HEAD
 /.git/index
